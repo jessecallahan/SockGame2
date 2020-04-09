@@ -1,16 +1,18 @@
 <html>
 
 <head>
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="styles.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="sock.js"></script>
   <title>Match your Socks</title>
 </head>
 
 <body>
-  <div class="container">
+  <div class=" container">
     <div class="row">
       <div class="col-sm">
         <h1>Match your socks!</h1>
@@ -27,12 +29,22 @@
     <div id="answers" class="row">
       <div class="col-sm">
         <h3>First Sock:<div id="sock1-value"></div>
-        </h3>
+          <div id="round2show">
+            <h3>First Sock: </h3>
+            <div id="round2"></div>
+            <button class="btn-success" id="drawer1r2">Drawer 1</button>
+            <button class="btn-primary" id="drawer2r2">Drawer 2</button>
+          </div>
+
       </div>
 
 
       <div class="col-sm">
         <h3>Second Sock:<div id="sockValue2"></div>
+          <div id="round2show2">
+            <h3>First Sock: </h3>
+            <div id="round2"></div>
+          </div>
 
 
       </div>

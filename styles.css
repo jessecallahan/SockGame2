@@ -1,0 +1,7 @@
+body{
+  background-color: mediumslateblue;
+}
+
+#round2show, #round2show2 {
+  display: none;
+}

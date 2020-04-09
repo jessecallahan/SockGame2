@@ -25,6 +25,14 @@ const changeState = (prop) => {
   }
 }
 
+// this could help, randomn using recursion
+//function generateNum (min, max) {
+//   var randNumber = Math.floor(Math.random()*(max - min + 1)) + min;
+//   if (randNumber == max) {
+//     randNumber += generateNum(min, max);
+//   }
+//   return randNumber;
+// }
 
 //algo
 const socks = ["blue", "red", "brown"]

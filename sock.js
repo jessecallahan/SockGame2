@@ -1,4 +1,3 @@
-// This function stores our state.
 
 const storeState = () => {
   let oldState = {};
@@ -9,12 +8,10 @@ const storeState = () => {
   }
 }
 
-// const stateChanger = storeState();
 const firstSock = storeState();
 const secondSock = storeState();
+const thirdSock = storeState();
 
-
-// This is a function factory. We can easily create more specific functions that alter a plant's soil, water, and light to varying degrees.
 
 const changeState = (prop) => {
   return (value) => {
@@ -25,66 +22,79 @@ const changeState = (prop) => {
   }
 }
 
-// this could help, randomn using recursion
-//function generateNum (min, max) {
-//   var randNumber = Math.floor(Math.random()*(max - min + 1)) + min;
-//   if (randNumber == max) {
-//     randNumber += generateNum(min, max);
-//   }
-//   return randNumber;
-// }
-
-//algo
 const socks = ["blue", "red", "brown"]
-const randomnSock = socks[Math.floor(Math.random() * socks.length)];
-const randomnSock2 = socks[Math.floor(Math.random() * socks.length)];
-const randomnSock3 = socks[Math.floor(Math.random() * socks.length)];
-const randomnSock4 = socks[Math.floor(Math.random() * socks.length)];
+function rondamonizer(choices, count) {
+  result = [];
+  for (let i = 0; i < count; i++) {
+    result.push(choices[Math.floor(Math.random() * socks.length)]);
+  }
+  return result;
+}
+
+//cant figure out how to add multipl
+// const name = changeState("name")
+// const redname = changeState("name")("red")
+// const bluename = changeState("name")("red")
+// const brownname = changeState("name")("red")
+
+const picture = changeState("img");
+const red = changeState("img")("img/images-2.jpg")
+const blue = changeState("img")("img/download.jpg")
+const brown = changeState("img")("img/images-1.jpg")
 
 
-// We create two functions using our function factory. We could easily create many more.
-const sockColor = changeState("color");
-const sock1Color = changeState("color")(randomnSock);
-const sock2Color = changeState("color")(randomnSock2);
-const sock3Color = changeState("color")(randomnSock3);
 
+
+
+const drawers = rondamonizer([blue, red, brown], 2);
+const pick = rondamonizer([blue, red, brown], 1);
+
+
+let score = 0;
+// This function has side effects because we are using jQuery. Manipulating the DOM will always be a side effect.
 $(document).ready(function () {
-  const sock1 = firstSock(sock1Color);
-  $('#sock1-value').text(sock1.color);
+  const firstpick = firstSock(pick[0]);
+  const drawer1 = secondSock(drawers[0]);
+  const drawer2 = thirdSock(drawers[1]);
 
-  // This function has side effects because we are using jQuery. Manipulating the DOM will always be a side effect.
+  $('#pick').html(`<img src='${firstpick.img}'height="100" width="100">`);
 
-  $('#drawer1').click(function () {
-    const sock2 = secondSock(sock2Color);
-    $("#buttons1").hide();
-    $('#sockValue2').text(sock2.color);
-    if (sock1.color === sock2.color) {
-      $('#gameValue').text("You matched socks! Lets move on!")
-      $('#score').text("one pair matched")
-      $("#round2show").show();
-      $("#round2show2").show();
-      $("#round2").text(randomnSock4);
-      //needs button that resets value, generates another s but keeps score
-    } else {
-      $('#gameValue').text("Not a match! Lets reset. Hit the refresh button.")
-    }
-  });
+  document.getElementById("drawer1").addEventListener("click", myFunction);
+  document.getElementById("drawer2").addEventListener("click", myFunction2);
 
-  $('#drawer2').click(function () {
-    const sock2 = secondSock(sock3Color);
-    $("#buttons1").hide();
-    $('#sockValue2').text(sock2.color);
-    if (sock1.color === sock2.color) {
-      $('#gameValue').text("You matched socks! Lets move on!")
-      $('#score').text("one pair matched")
-      $("#round2show").show();
-      $("#round2show2").show();
-      $("#round2").text(randomnSock4);
-      //needs button that resets value, generates another s but keeps score
-    } else {
-      $('#gameValue').text("Not a match! Lets reset. Hit the refresh button.")
-    }
-  });
+  function myFunction() {
+    document.getElementById("drawer1").innerHTML = `<img src='${drawer1.img}'height="100" width="100">`;
+    console.log(firstpick)
+    console.log(drawer1)
+    if (firstpick.img == drawer1.img) { document.getElementById("score").innerHTML = "nice" }
+    else { document.getElementById("score").innerHTML = "you lose" }
+  }
+  function myFunction2() {
+    document.getElementById("drawer2").innerHTML = `<img src='${drawer2.img}'height="100" width="100">`;
+    if (firstpick.img == drawer2.img) { document.getElementById("score").innerHTML = "nice" }
+    else { document.getElementById("score").innerHTML = "you lose" }
+  }
+
+
+
+
+
+
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -1,7 +1,14 @@
 body{
-  background-color: mediumslateblue;
+  background-color: lightgoldenrodyellow;
 }
 
-#round2show, #round2show2 {
+#drawerButtons{
   display: none;
+}
+
+.img {
+  float:  left;
+  width:  100px;
+  height: 100px;
+  background-size: cover;
 }
